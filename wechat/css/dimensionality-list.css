@@ -1,0 +1,187 @@
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ececec; }
+
+ul, li {
+  list-style: none; }
+
+.btn40 {
+  display: inline-block;
+  width: 40%; }
+
+.btn90 {
+  width: 90%; }
+
+.bg-blue {
+  background-color: #0d7ddc;
+  color: #fff; }
+
+.margin-r5 {
+  margin-right: 5%; }
+
+.dis-none {
+  display: none; }
+
+#dimen {
+  width: 100%;
+  padding-top: 20px; }
+  #dimen .tips {
+    margin: 0 auto;
+    width: 90%;
+    min-height: 150px;
+    line-height: 150px;
+    border: 1px solid #999;
+    text-align: center;
+    background-color: #fff;
+    box-sizing: border-box; }
+  #dimen .list {
+    margin: 0 auto;
+    width: 90%; }
+    #dimen .list .list-item {
+      margin: 10px 0;
+      background-color: #FFF;
+      border: 1px solid #999; }
+    #dimen .list .list-item-title {
+      padding: 10px;
+      border-bottom: 1px solid #999; }
+    #dimen .list .list-item-content {
+      padding: 10px;
+      font-size: 14px;
+      border-bottom: 1px solid #999; }
+    #dimen .list .list-item-op {
+      padding: 10px;
+      display: flex;
+      justify-content: space-around; }
+      #dimen .list .list-item-op span {
+        width: 20%;
+        padding: 5px 0;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 3px;
+        border: 1px solid #0d7ddc; }
+  #dimen .add {
+    margin: 0 auto;
+    margin-top: 30%;
+    width: 90%;
+    border: 1px solid #999;
+    background-color: #fff; }
+    #dimen .add .add-title {
+      font-size: 20px;
+      line-height: 35px;
+      color: #0d7ddc;
+      text-align: center; }
+    #dimen .add .new-title {
+      padding: 0.77em 0 0.3em 15px;
+      margin-top: 0;
+      margin-bottom: 0;
+      color: #000;
+      background-color: #ececec; }
+  #dimen .btn-box {
+    text-align: center; }
+  #dimen .cover-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99; }
+  #dimen .sub-list {
+    margin: 30% auto 0;
+    width: 90%;
+    background-color: #fff; }
+    #dimen .sub-list .sub-list-title {
+      padding: 10px; }
+    #dimen .sub-list .margin-top0 {
+      margin-top: 0; }
+    #dimen .sub-list .sub-list-btn {
+      text-align: center; }
+  #dimen .max-h400 {
+    max-height: 400px;
+    overflow-y: auto; }
+  #dimen .grade-model {
+    margin: 30% auto 0;
+    width: 90%;
+    background-color: #fff; }
+    #dimen .grade-model .grade-model-title {
+      height: 45px;
+      line-height: 45px;
+      text-align: center;
+      border-bottom: 1px solid #999;
+      background-color: #ececec; }
+    #dimen .grade-model .grade-model-nav {
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #999; }
+      #dimen .grade-model .grade-model-nav span {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        box-sizing: border-box; }
+      #dimen .grade-model .grade-model-nav span:first-child {
+        border-right: 1px solid #999; }
+    #dimen .grade-model .grade-model-1 {
+      min-height: 120px;
+      max-height: 300px;
+      overflow-y: auto; }
+    #dimen .grade-model .grade-model-item {
+      display: block;
+      margin: 10px auto;
+      padding: 0 5px;
+      min-width: 60px;
+      max-width: 100px;
+      border: 1px solid;
+      text-align: center; }
+    #dimen .grade-model .grade-model-noinfl, #dimen .grade-model .grade-model-infl {
+      margin: 0 auto;
+      width: 90%; }
+    #dimen .grade-model .grade-model-infl-top {
+      margin-bottom: 10px;
+      border: 1px solid #999; }
+      #dimen .grade-model .grade-model-infl-top .top-p {
+        border-bottom: 1px solid #999;
+        background-color: #ececec; }
+      #dimen .grade-model .grade-model-infl-top .top-d {
+        display: flex; }
+      #dimen .grade-model .grade-model-infl-top .top-ul {
+        max-height: 100px;
+        overflow-y: auto; }
+      #dimen .grade-model .grade-model-infl-top .top-span {
+        display: inline-block;
+        width: 50%;
+        border-right: 1px solid #999;
+        box-sizing: border-box;
+        text-align: center;
+        vertical-align: middle; }
+      #dimen .grade-model .grade-model-infl-top .no-border-right {
+        border-right: none; }
+    #dimen .grade-model .grade-model-infl-b {
+      border: 1px solid #999; }
+    #dimen .grade-model .grade-model-item-title {
+      text-align: center;
+      border-bottom: 1px solid #999;
+      background-color: #ececec; }
+    #dimen .grade-model .grade-model-item-list {
+      padding: 10px 0;
+      border-bottom: 1px solid #999; }
+      #dimen .grade-model .grade-model-item-list span {
+        display: inline-block;
+        width: 70%;
+        padding-left: 20px;
+        box-sizing: border-box; }
+      #dimen .grade-model .grade-model-item-list input {
+        width: 50px;
+        padding: 5px;
+        border: 1px solid #999;
+        box-sizing: border-box; }
+    #dimen .grade-model .grade-model-btn {
+      text-align: center; }
+
+.no-border-bottom {
+  border-bottom: none; }
+
+/*# sourceMappingURL=dimensionality-list.css.map */

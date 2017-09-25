@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>测评系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="msapplication-tap-highlight" content="no"><!--去掉winphone系统a、input标签被点击时产生的半透明灰色背景-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/><!--Sets whether a web application runs in full-screen mode.-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>   <!--作用是控制状态栏显示样式-->
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+
+    <!--<link rel="stylesheet" href="../public/css/reset.css"/>-->
+    <link rel="stylesheet" href="jQuery-weui-1.0.1/weui.css"/>
+    <link rel="stylesheet" href="jQuery-weui-1.0.1/jquery-weui.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+
+    <script src="js/pub/vue.min.js"></script>
+    <script src="js/pub/vue-resource@1.3.3.js"></script>
+    <script src="js/lib/config.js"></script>
+    <script src="js/lib/utils.js"></script>
+
+</head>
+<body ontouchstart>
+
+<!-- 容器 -->
+<div class="weui-tab" id="boeuIndex">
+    <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+            <div class="weui-search-bar" id="searchBar">
+                <form class="weui-search-bar__form">
+                    <div class="weui-search-bar__box">
+                        <i class="weui-icon-search"></i>
+                        <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                        <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                    </div>
+                    <label class="weui-search-bar__label" id="searchText">
+                        <i class="weui-icon-search"></i>
+                        <span>搜索</span>
+                    </label>
+                </form>
+                <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+            </div>
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="./images/banner/banner01.png" /></div>
+                    <div class="swiper-slide"><img src="./images/banner/banner02.png" /></div>
+                    <div class="swiper-slide"><img src="./images/banner/banner03.png" /></div>
+                    <div class="swiper-slide"><img src="./images/banner/banner04.png" /></div>
+                    <div class="swiper-slide"><img src="./images/banner/banner05.png" /></div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="list-nav-content">
+                <ul class="list-nav">
+                    <li class="list-nav-name list-nav-active">
+                        全部
+                    </li><li class="list-nav-name ">
+                        性格
+                    </li><li class="list-nav-name ">
+                        认知
+                    </li><li class="list-nav-name">
+                        职业
+                    </li><li class="list-nav-name">
+                        健康
+                    </li><li class="list-nav-name">
+                        价值观
+                    </li><li class="list-nav-name">
+                        情感
+                    </li><li class="list-nav-name">
+                        亲子
+                    </li>
+                </ul>
+                <div class="list-content">
+                    <ul class="list-content-box">
+                        <li class="list-content-item">
+                            <img src="images/bg/bg1.png" alt="" class="content-item-bg">
+                            <p class="content-item-w">测试的文字</p>
+                        </li>
+                        <li class="list-content-item">
+                            <img src="images/bg/bg2.png" alt="" class="content-item-bg"><p class="content-item-w">答卷的标题不能太长</p>
+                        </li>
+                        <li class="list-content-item">
+                            <img src="images/bg/bg3.png" alt="" class="content-item-bg"><p class="content-item-w">问卷的标题</p>
+                        </li>
+                        <li class="list-content-item">
+                            <img src="images/bg/bg4.png" alt="" class="content-item-bg">
+                            <p class="content-item-w">性格的测试</p>
+                        </li>
+                        <li class="list-content-item">
+                            <img src="images/bg/bg5.png" alt="" class="content-item-bg"><p class="content-item-w">问卷的标题</p>
+                        </li>
+                        <li class="list-content-item">
+                            <img src="images/bg/bg6.png" alt="" class="content-item-bg">
+                            <p class="content-item-w">性格的测试</p>
+                        </li>
+                        <li class="list-content-item">
+                            <img src="images/bg/bg7.png" alt="" class="content-item-bg"><p class="content-item-w">问卷的标题</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="height: 100px">
+
+            </div>
+        </div>
+        <div id="tab2" class="weui-tab__bd-item">
+           <div class="top-title">
+               <img src="images/user-default-img.jpg" alt="">
+               <p>微信用户名称</p>
+           </div>
+            <div class="page-list">
+                <p class="page-list-nav">
+                    <span :class="{'page-list-nav-selected':flag0}" @click="flag0=!flag0">已答问卷</span><span :class="{'page-list-nav-selected':!flag0}" @click="flag0=!flag0">已建问卷</span>
+                </p>
+                <ul class="page-list-box " :class="{'dis-none':!flag0}">
+                    <li class="page-list-item">
+                        <p ><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p>
+                            <!--<span>分享</span>-->
+                            <span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p><span>分享</span><span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p><span>分享</span><span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p><span>分享</span><span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p><span>分享</span><span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p><span>分享</span><span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p><span>分享</span><span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我答的问卷标题</span><span>答题时间：2017-09-08 14:25:23</span></p>
+                        <p><span>分享</span><span>查看最新报告</span><span>查看已有报告</span></p>
+                    </li>
+                </ul>
+                <ul class="page-list-box " :class="{'dis-none':flag0}">
+                    <li class="page-list-item">
+                        <p><span>我建问卷标题[ID:问卷ID]</span><span>1答卷人数</span></p>
+                        <p><span @click="goPublishPage()">未发布</span><span @click="copyPage()">复制</span><span @click="goSettingPage">设置</span>
+                            <!--<span>分享</span>-->
+                            <span @click="deletePage()">删除</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我建问卷标题[ID:问卷ID]</span><span>1答卷人数</span></p>
+                        <p><span>未发布</span><span>复制</span><span>修改</span><span>分享</span><span>删除</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我建问卷标题[ID:问卷ID]</span><span>1答卷人数</span></p>
+                        <p><span>未发布</span><span>复制</span><span>修改</span><span>分享</span><span>删除</span></p>
+                    </li>
+                    <li class="page-list-item">
+                        <p><span>我建问卷标题[ID:问卷ID]</span><span>1答卷人数</span></p>
+                        <p><span>未发布</span><span>复制</span><span>修改</span><span>分享</span><span>删除</span></p>
+                    </li>
+                </ul>
+                <div class="height100"><span>© 2017 京东方大学 版权所有</span></div>
+            </div>
+        </div>
+        <!--<div id="tab3" class="weui-tab__bd-item">-->
+            <!--<div class="contact-box">-->
+                <!--<p>投稿和互推的请发送邮件到我们的邮箱</p>-->
+                <!--<p>Boeu_assessment@boe.com.cn</p>-->
+                <!--<p><img src="images/bg/qr-code.jpg" alt=""></p>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <div class="weui-tabbar">
+        <a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
+            <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
+            <div class="weui-tabbar__icon">
+                <img src="./images/icon-test01.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="#tab2" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon">
+                <img src="./images/icon-me01.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的问卷</p>
+        </a>
+        <!--href="#tab3"-->
+        <a  class="weui-tabbar__item" @click="flag1 = !flag1">
+            <div class="weui-tabbar__icon">
+                <img src="./images/icon-contact01.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的设置</p>
+        </a>
+    </div>
+    <ul class="index-menus" :class="{'dis-none':!flag1}">
+        <li class="index-menu" @click="mailLogin"><a href="#" class="index-menu-a">邮箱登录</a></li>
+        <li class="index-menu" @click="mobileNew"><a href="#" class="index-menu-a">新建问卷</a></li>
+        <li class="index-menu" @click="contactUs"><a href="#" class="index-menu-a">联系我们</a></li>
+    </ul>
+</div>
+
+</body>
+<script src="jQuery-weui-1.0.1/jquery.min.js" type="text/javascript"></script>
+<script src="js/pub/fastclick.js" type="text/javascript"></script>
+<script>
+	$(function() {
+		FastClick.attach(document.body);
+	});
+</script>
+<script src="jQuery-weui-1.0.1/jquery-weui.js" type="text/javascript"></script>
+<script src="jQuery-weui-1.0.1/swiper.js"></script>
+<script>
+	$(".swiper-container").swiper({
+		loop: true,
+		autoplay: 3000
+	});
+</script>
+<script src="js/index.js"></script>
+</html>

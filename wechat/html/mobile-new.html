@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>新建问卷</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/weui.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/jquery-weui.css">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/mobile-new.css"/>
+    <script src="../jQuery-weui-1.0.1/jquery.min.js"></script>
+    <script src="../jQuery-weui-1.0.1/jquery-weui.min.js"></script>
+    <script src="../js/pub/vue.min.js"></script>
+    <script src="../js/pub/vue-resource@1.3.3.js"></script>
+</head>
+<body>
+<div></div>
+<div id="mobileNew">
+    <div class="newMain">
+        <div class="fist-step" v-show="showFirstStep">
+            <div class="name-tag">问卷名称<span class="non-empty">*</span></div>
+            <div class="name-tag">
+                <input type="text" v-model="quesName" placeholder="请输入问卷名称" class="ques-name">
+            </div>
+            <div class="name-tag">问卷标签<span class="non-empty">*</span></div>
+            <div class="tag-btn">
+                <label class="tag-btns" v-for="(tagItem,$index) in tagList" @click="tagSelect(tagItem,$index)" :class="{'tag-active':tagItem.isSelect}">{{tagItem.tagName}}</label>
+                <!--<label class="tag-btns">认知</label>-->
+                <!--<label class="tag-btns">职业</label>-->
+                <!--<label class="tag-btns">健康</label>-->
+                <!--<label class="tag-btns">价值观</label>-->
+                <!--<label class="tag-btns">情感</label>-->
+                <!--<label class="tag-btns">亲子</label>-->
+                <!--<label class="tag-btns">其它</label>-->
+            </div>
+            <div class="name-tag">问卷说明</div>
+            <div class="textarea-box">
+                <textarea class="weui-textarea" placeholder="请输入文本" rows="4"></textarea>
+                <!--<div class="weui-textarea-counter"><span>0</span>/200</div>-->
+            </div>
+            <div class="next-step" @click="nextStepPress">下一步</div>
+        </div>
+        <div class="weui-tab second-step" v-show="!showFirstStep">
+                <div class="weui-navbar">
+                    <a class="weui-navbar__item weui-bar__item--on" href="#tabTitle">
+                        题目设置
+                    </a>
+                    <a class="weui-navbar__item " href="#tabOption">
+                        选项设置
+                    </a>
+                </div>
+                <div class="weui-tab__bd">
+                    <div id="tabTitle" class="weui-tab__bd-item weui-tab__bd-item--active">
+                        <div class="name-tag">题目提示<span class="non-empty">*</span></div>
+                        <div class="name-tag">
+                            <input type="text" placeholder="请输入标题" class="ques-name" v-model="quesTitleInfo">
+                        </div>
+                        <div class="name-tag">题目内容<span class="non-empty">*</span></div>
+                        <ques-title-name v-on:deletetitleparent="deleteTitle(index)" v-for="(titleName,index) in titleNames" v-model="titleName.titleName"></ques-title-name>
+                        <div class="add-title" @click="addTitle">添加题目内容</div>
+                    </div>
+                    <div id="tabOption" class="weui-tab__bd-item">
+                        <div class="name-tag">选项内容<span class="non-empty">*</span></div>
+                        <option-list-content v-for="(optionContent,index) in optionContents" v-bind:optionScore="optionContent.score" v-on:inputscore="optionScore => {optionContent.score=optionScore}" v-bind:optionValue="optionContent.optionName" v-on:inputoption="optionValue => {optionContent.optionName=optionValue}" v-bind:index="index" v-on:deleteoptionparent="deleteOption(index)" v-on:upoptionparent="upOption(index)" v-on:downoptionparent="downOption(index)"></option-list-content>
+                        <div class="add-option" @click="addOption">添加选项</div>
+                    </div>
+                </div>
+                <div class="second-step-btn">
+                    <div class="step2-btn" @click="lastStepPress">上一步</div>
+                    <div class="step2-btn" @click="completePress">完成创建</div>
+                </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="../js/mobile-new.js"></script>
+</html>

@@ -1,0 +1,23 @@
+#userInfos{
+  .must-need{
+    color: red;
+    margin-right:10px;
+  }
+  .no-need{
+    display: inline-block;
+    width:17px;
+  }
+  .ques-inter{
+    border: none;
+  }
+  .userInfoSubmit{
+    margin: 20px auto 20px;
+    width: 90%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+    background-color: #0d7ddc;
+    border-radius: 5px;
+  }
+}

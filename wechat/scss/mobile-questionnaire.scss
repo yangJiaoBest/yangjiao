@@ -1,0 +1,106 @@
+//公共选项动态控制宽度
+.array-option{
+  text-align: center;
+}
+.array-option2{
+  width:45%;
+}
+.array-option3{
+  width:30%;
+}
+.array-option4{
+  width:20%;
+}
+.array-option5{
+  width:16%;
+}
+.array-option6{
+  width:14%;
+}
+#mobileQuestion{
+  .ques-big-title{
+    width:100%;
+    line-height: 40px;
+    height:40px;
+    background-color: #0d7ddc;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+  }
+  .ques-big-info{
+    padding:5px 10px;
+    font-size: 16px;
+  }
+  .quest-big-body{
+    padding:5px 10px;
+    .ques-array-box{
+      margin-bottom: 20px;
+      .ques-array-info{
+        margin:5px 0;
+        font-size: 16px;
+      }
+      .array-titles-box{
+        padding:10px;
+        border: 1px solid #eee;
+        .array-titles{
+          .array-options{
+            display: flex;
+            justify-content:space-around;
+            vertical-align: middle;
+            background-color: #eee;
+            margin-top:10px;
+            font-size: 14px;
+            line-height: 30px;
+            .array-option{
+              text-align: center;
+            }
+          }
+          .ques-title-name{
+            display: flex;
+            justify-content: flex-start;
+            vertical-align: middle;
+            margin:10px 0;
+            font-size: 14px;
+          }
+          .ques-options{
+            display: flex;
+            justify-content: space-around;
+            vertical-align: middle;
+            flex-wrap: wrap;
+            .ques-option{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              .ques-input-common{
+                display:none;
+                appearance: none;
+                -webkit-appearance: none;
+                outline: none;
+              }
+              .ques-input-replace{
+                width: 24px;
+                height:24px;
+                background:url(../images/select/check_01.png) no-repeat;
+                background-size: contain;
+              }
+              .ques-input-common:checked +.ques-input-replace{
+                background:url(../images/select/check_02.png) no-repeat;
+                background-size: contain;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .ques-submit{
+    margin:50px auto 50px;
+    width: 90%;
+    line-height: 30px;
+    background-color: #0d7ddc;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+  }
+}

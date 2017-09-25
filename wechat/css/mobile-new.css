@@ -1,0 +1,105 @@
+html, body {
+  margin: 0;
+  padding: 0; }
+
+#mobileNew .newMain {
+  padding: 5px 15px; }
+  #mobileNew .newMain .fist-step .name-tag {
+    margin: 10px 0;
+    font-size: 19px; }
+    #mobileNew .newMain .fist-step .name-tag .non-empty {
+      color: red;
+      margin-left: 5px; }
+    #mobileNew .newMain .fist-step .name-tag .ques-name {
+      width: calc(100% - 10px);
+      margin-bottom: 5px; }
+  #mobileNew .newMain .fist-step .tag-btn {
+    display: flex;
+    flex-wrap: wrap; }
+    #mobileNew .newMain .fist-step .tag-btn .tag-btns {
+      width: 19%;
+      line-height: 35px;
+      margin: 8px 8px;
+      background-color: #FFFFFF;
+      border: 1px solid #ddd;
+      text-align: center; }
+    #mobileNew .newMain .fist-step .tag-btn .tag-active {
+      background-color: #0d7ddc;
+      color: #FFFFFF; }
+  #mobileNew .newMain .fist-step .textarea-box {
+    padding: 5px;
+    border: 1px solid #ddd; }
+  #mobileNew .newMain .fist-step .next-step {
+    width: 100%;
+    line-height: 35px;
+    margin: 100px auto 0;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #0d7ddc; }
+  #mobileNew .newMain .second-step {
+    margin-top: 10px; }
+    #mobileNew .newMain .second-step .name-tag {
+      margin: 10px 0;
+      font-size: 19px; }
+      #mobileNew .newMain .second-step .name-tag .non-empty {
+        color: red;
+        margin-left: 5px; }
+      #mobileNew .newMain .second-step .name-tag .ques-name {
+        width: calc(100% - 50px);
+        margin-bottom: 5px; }
+      #mobileNew .newMain .second-step .name-tag .deletetitle {
+        width: 16px;
+        margin-left: 10px;
+        margin-top: 5px; }
+    #mobileNew .newMain .second-step .add-title, #mobileNew .newMain .second-step .add-option {
+      margin: 20px auto 0;
+      width: 40%;
+      line-height: 35px;
+      font-size: 17px;
+      background: #0d7ddc;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px; }
+    #mobileNew .newMain .second-step .option-list {
+      overflow: hidden; }
+      #mobileNew .newMain .second-step .option-list .option-list-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px; }
+        #mobileNew .newMain .second-step .option-list .option-list-head .score .optionscore {
+          width: 30px;
+          line-height: 14px;
+          font-size: 14px; }
+      #mobileNew .newMain .second-step .option-list .option-list-body {
+        margin: 10px 0; }
+        #mobileNew .newMain .second-step .option-list .option-list-body .list-option-name {
+          width: calc(100% - 12px); }
+      #mobileNew .newMain .second-step .option-list .option-list-foot {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 5px 0;
+        line-height: 30px;
+        font-size: 16px; }
+        #mobileNew .newMain .second-step .option-list .option-list-foot .up, #mobileNew .newMain .second-step .option-list .option-list-foot .down, #mobileNew .newMain .second-step .option-list .option-list-foot .deleteoption {
+          margin-right: 10px; }
+          #mobileNew .newMain .second-step .option-list .option-list-foot .up img, #mobileNew .newMain .second-step .option-list .option-list-foot .down img, #mobileNew .newMain .second-step .option-list .option-list-foot .deleteoption img {
+            width: 16px;
+            margin: 5px 5px 0 0; }
+    #mobileNew .newMain .second-step .second-step-btn {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center; }
+      #mobileNew .newMain .second-step .second-step-btn .step2-btn {
+        width: 35%;
+        line-height: 40px;
+        text-align: center;
+        background: #0d7ddc;
+        color: #fff;
+        border-radius: 5px; }
+
+/*# sourceMappingURL=mobile-new.css.map */

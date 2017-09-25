@@ -1,0 +1,67 @@
+.page-title {
+  width: 100%;
+  height: 40px;
+  background-color: #0d7ddc;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px; }
+  .page-title .page-back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 20px;
+    cursor: pointer; }
+  .page-title .page-name {
+    line-height: 40px;
+    vertical-align: middle; }
+
+.login-content {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden; }
+  .login-content .login-content-title {
+    width: 100%;
+    margin: 30px 0;
+    font-size: 18px; }
+  .login-content .login-content-main {
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 16px; }
+    .login-content .login-content-main .login-mian-input {
+      display: flex;
+      margin: 10px 0;
+      height: 32px; }
+      .login-content .login-content-main .login-mian-input .name-psw {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 25%;
+        min-width: 70px; }
+        .login-content .login-content-main .login-mian-input .name-psw span {
+          margin-top: 3px;
+          color: red; }
+      .login-content .login-content-main .login-mian-input .name-psw-input {
+        flex: 1; }
+        .login-content .login-content-main .login-mian-input .name-psw-input input {
+          width: 80%;
+          line-height: 20px;
+          border: 1px solid #ddd;
+          padding: 5px;
+          border-radius: 3px; }
+  .login-content .login-content-btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px 0; }
+    .login-content .login-content-btn .login-sub-cancel {
+      width: 40%;
+      line-height: 35px;
+      text-align: center;
+      background: #0d7ddc;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer; }
+
+/*# sourceMappingURL=mobile-login.css.map */

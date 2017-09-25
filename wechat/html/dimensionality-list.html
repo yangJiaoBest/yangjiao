@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>维度列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="msapplication-tap-highlight" content="no"><!--去掉winphone系统a、input标签被点击时产生的半透明灰色背景-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/><!--Sets whether a web application runs in full-screen mode.-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>   <!--作用是控制状态栏显示样式-->
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/weui.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/jquery-weui.css"/>
+    <link rel="stylesheet" href="../css/dimensionality-list.css"/>
+
+</head>
+<body ontouchstart>
+
+<div class="main" id="dimen">
+    <p class="tips" style="display: none">
+        维度列表为空，请新建维度
+    </p>
+    <ul class="list">
+        <li class="list-item">
+            <p class="list-item-title">新建维度题目</p>
+            <p class="list-item-content">内容解释内容解释新建维度题目新建维度题目新建维度题目新建维度题目</p>
+            <p class="list-item-op"><span>题目选择</span><span>评分模型</span><span>修改</span><span>删除</span></p>
+        </li>
+        <li class="list-item">
+            <p class="list-item-title">新建维度题目</p>
+            <p class="list-item-content">内容解释内容解释新建维度题目新建维度题目新建维度题目新建维度题目</p>
+            <p class="list-item-op"><span>题目选择</span><span>评分模型</span><span>修改</span><span>删除</span></p>
+        </li>
+        <li class="list-item">
+            <p class="list-item-title">新建维度题目</p>
+            <p class="list-item-content">内容解释内容解释新建维度题目新建维度题目新建维度题目新建维度题目</p>
+            <p class="list-item-op"><span>题目选择</span><span>评分模型</span><span>修改</span><span>删除</span></p>
+        </li>
+    </ul>
+
+    <p class="btn-box">
+        <a href="javascript:;" class="weui-btn weui-btn_primary bg-blue btn90" >新增维度</a>
+        <a href="javascript:;" class="weui-btn weui-btn_primary btn40 bg-blue margin-r5" style="display: none">保存</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default btn40  " style="display: none">取消</a>
+    </p>
+    <div class="cover-box" >
+        <div class="add" style="display: none">
+            <p class="title add-title">新建维度</p>
+            <div class="weui-cells__title new-title">维度名称</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" placeholder="请输入名称">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cells__title new-title">维度内涵/定义</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea" placeholder="请输入文本" rows="3"></textarea>
+                        <div class="weui-textarea-counter"><span>0</span>/400</div>
+                    </div>
+                </div>
+            </div>
+            <p class="btn-box">
+                <a href="javascript:;" class="weui-btn weui-btn_primary btn40 bg-blue margin-r5" >保存</a>
+                <a href="javascript:;" class="weui-btn weui-btn_default btn40  " >取消</a>
+            </p>
+        </div>
+        <div style="display: none" class="sub-list">
+            <p class="title sub-list-title">题目列表</p>
+            <ul class="weui-cells weui-cells_checkbox margin-top0 max-h400">
+                <li>
+                    <label class="weui-cell weui-check__label" for="s11">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>standard is dealt for u.</p>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label class="weui-cell weui-check__label" for="s12">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>standard is dealicient for u.</p>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label class="weui-cell weui-check__label" for="s12">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>standard is dealicient for u.</p>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label class="weui-cell weui-check__label" for="s12">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>standard is dealicient for u.</p>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label class="weui-cell weui-check__label" for="s12">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>standard is dealicient for u.</p>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+            <p class="sub-list-btn">
+                <a href="javascript:;" class="weui-btn weui-btn_primary btn40 bg-blue margin-r5" >确定</a>
+                <a href="javascript:;" class="weui-btn weui-btn_default btn40  " >取消</a>
+            </p>
+        </div>
+        <div class="grade-model">
+            <p class="title grade-model-title">评分模型设置</p>
+            <p class="grade-model-nav"><span class="">绝对分数</span><span class="bg-blue">相对分数</span></p>
+            <div class="grade-model-1 dis-none">
+                <span class="grade-model-item">总和</span>
+                <span class="grade-model-item">平均分</span>
+            </div>
+            <div class="grade-model-1 ">
+                <span class="grade-model-item">无影响因素</span>
+                <div class="grade-model-noinfl dis-none">
+                    <p class="grade-model-item-title">参数</p>
+                    <p  class="grade-model-item-list"><span>常模平均值(M)</span><input type="text"></p>
+                    <p class="grade-model-item-list no-border-bottom"><span>常模标准差(SD)</span><input type="text"></p>
+                </div>
+                <span class="grade-model-item">有影响因素</span>
+                <div class="grade-model-infl">
+                    <div class="grade-model-infl-top">
+                        <p class="top-p"><span class="top-span">维度列表</span><span class="top-span no-border-right">已选维度</span></p>
+                        <div class="top-d">
+                            <ul class="top-span top-ul"><li>第一个维度</li><li>第二个</li><li>第一个维度</li><li>第二个</li></ul>
+                            <p class="top-span no-border-right ">选中的左侧</p>
+                        </div>
+                    </div>
+                    <div class="grade-model-infl-b">
+                        <p class="grade-model-item-title">参数</p>
+                        <p  class="grade-model-item-list"><span>常模平均值(M)</span><input type="text"></p>
+                        <p class="grade-model-item-list "><span>常模标准差(SD)</span><input type="text"></p>
+                        <p class="grade-model-item-list "><span>回归系数(regression coefficient/beta)</span><input type="text"></p>
+                        <p class="grade-model-item-list no-border-bottom"><span>回归截距(regression intercept/constant)</span><input type="text"></p>
+                    </div>
+                </div>
+            </div>
+            <p class="grade-model-btn">
+                <a href="javascript:;" class="weui-btn weui-btn_primary btn40 bg-blue margin-r5" >确定</a>
+                <a href="javascript:;" class="weui-btn weui-btn_default btn40  " >取消</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../jQuery-weui-1.0.1/jquery.min.js" type="text/javascript"></script>
+<script src="../js/pub/fastclick.js" type="text/javascript"></script>
+<script>
+	$(function() {
+		FastClick.attach(document.body);
+	});
+</script>
+<script src="../jQuery-weui-1.0.1/jquery-weui.js" type="text/javascript"></script>
+<script src="../js/dimensionality-list.js"></script>
+</html>

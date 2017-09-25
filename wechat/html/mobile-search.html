@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/weui.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/jquery-weui.css">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/mobile-search.css">
+</head>
+<body>
+<div id="mobileSearch">
+    <div class="search-list-head">
+        <a href="#">
+            <div class="company">现测献计</div>
+        </a>
+    </div>
+    <div class="search-list-box">
+        <input type="text" class="search-input-mobile" placeholder="请输入关键词" v-model="questionnaire">
+        <div class="search-btn-mobile" @click="search">搜索</div>
+    </div>
+    <div class="search-list-content">
+        <div class="search-list-row">
+            <img src="../images/detail2.png" class="list-image">
+            <div class="list-content">
+                <div class="list-content-title">问卷名称[ID:1302]</div>
+                <div class="list-content-number">5人已答</div>
+            </div>
+        </div>
+        <div class="search-list-row">
+            <img src="../images/detail2.png" class="list-image">
+            <div class="list-content">
+                <div class="list-content-title">问卷名称[ID:1302]</div>
+                <div class="list-content-number">5人已答</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../jQuery-weui-1.0.1/jquery.min.js"></script>
+<script src="../jQuery-weui-1.0.1/jquery-weui.min.js"></script>
+<script src="../js/pub/vue.min.js"></script>
+<script src="../js/pub/vue-resource@1.3.3.js"></script>
+<script src="../js/mobile-search.js"></script>
+</body>
+</html>

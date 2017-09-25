@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>问卷设置</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/weui.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/jquery-weui.css">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/mobile-setting.css"/>
+    <script src="../jQuery-weui-1.0.1/jquery.min.js"></script>
+    <script src="../jQuery-weui-1.0.1/jquery-weui.min.js"></script>
+    <script src="../js/pub/vue.min.js"></script>
+    <script src="../js/pub/vue-resource@1.3.3.js"></script>
+</head>
+<body>
+<div id="mobileSet">
+    <!--<page-title page-title="问卷名称" v-on:pagetitleparent="pageComeBack"></page-title>-->
+    <!--<div class="mobileSettings" v-show="!publishSettingShow">-->
+        <!--<div class="main-item" @click="publishSetting">发布问卷</div>-->
+        <!--<div class="main-item" @click="dimensionSetting">维度设置</div>-->
+        <!--<div class="main-item" @click="updateQuestionnaire">修改问卷</div>-->
+        <!--<div class="main-item" @click="reportSetting">报告设置</div>-->
+        <!--<div class="main-item" @click="checkQuestionnaire">查看问卷</div>-->
+        <!--<div class="main-item1">“设置图片”“设置背景色”的功能请到PC端操作</div>-->
+    <!--</div>-->
+    <div class="weui-grids">
+        <div class="weui-grid js_grid"  @click="publishSetting">
+            <div class="weui-grid__icon">
+                <img src="../images/questionnaire-set/6.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+               发布问卷
+            </p>
+        </div>
+        <div class="weui-grid js_grid" @click="dimensionSetting">
+            <div class="weui-grid__icon" >
+                <img src="../images/questionnaire-set/5.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                维度设置
+            </p>
+        </div>
+        <div class="weui-grid js_grid" @click="updateQuestionnaire">
+            <div class="weui-grid__icon">
+                <img src="../images/questionnaire-set/4.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                修改问卷
+            </p>
+        </div>
+        <div class="weui-grid js_grid" @click="reportSetting">
+            <div class="weui-grid__icon" >
+                <img src="../images/questionnaire-set/3.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                报告设置
+            </p>
+        </div>
+        <div class="weui-grid js_grid"  @click="checkQuestionnaire">
+            <div class="weui-grid__icon">
+                <img src="../images/questionnaire-set/2.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                查看问卷
+            </p>
+        </div>
+        <div class="weui-grid js_grid"  @click="pictureSetting">
+            <div class="weui-grid__icon">
+                <img src="../images/questionnaire-set/1.png" alt="">
+            </div>
+            <p class="weui-grid__label">
+                图片设置
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script src="../js/mobile-setting.js"></script>
+</html>

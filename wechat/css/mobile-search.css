@@ -1,0 +1,57 @@
+html, body {
+  margin: 0;
+  padding: 0; }
+
+.search-list-head {
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  background-color: #0d7ddc; }
+  .search-list-head a {
+    text-decoration: none;
+    font-size: 20px;
+    color: white; }
+
+.search-list-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 35px;
+  line-height: 35px; }
+  .search-list-box .search-input-mobile {
+    width: 70%;
+    padding-left: 10px;
+    border: 2px solid #ddd; }
+  .search-list-box .search-btn-mobile {
+    width: 20%;
+    height: 35px;
+    line-height: 35px;
+    background-color: #0d7ddc;
+    text-align: center;
+    color: white; }
+
+.search-list-content {
+  border-top: 1px solid #ddd; }
+  .search-list-content .search-list-row {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f2f2f2; }
+    .search-list-content .search-list-row .list-image {
+      width: 80px;
+      height: 50px;
+      object-fit: cover; }
+    .search-list-content .search-list-row .list-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 10px; }
+      .search-list-content .search-list-row .list-content .list-content-title {
+        font-size: 16px; }
+      .search-list-content .search-list-row .list-content .list-content-number {
+        font-size: 12px;
+        color: #ccc; }
+
+/*# sourceMappingURL=mobile-search.css.map */

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>个人信息</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/weui.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/jquery-weui.css">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/user-infos.css"/>
+    <script src="../jQuery-weui-1.0.1/jquery.min.js"></script>
+    <script src="../jQuery-weui-1.0.1/jquery-weui.min.js"></script>
+    <script src="../js/pub/vue.min.js"></script>
+    <script src="../js/pub/vue-resource@1.3.3.js"></script>
+</head>
+<body>
+<div id="userInfos">
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span class="must-need">*</span>性别</p>
+            </div>
+            <input class="weui-cell__ft ques-inter" id="sex" placeholder="请选择"/>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span class="must-need">*</span>出生时间</p>
+            </div>
+            <input class="weui-cell__ft ques-inter" placeholder="请选择" id="birthDay"/>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span class="must-need">*</span>学历</p>
+            </div>
+            <input class="weui-cell__ft ques-inter" placeholder="请选择" id="education"/>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span class="must-need">*</span>所属行业</p>
+            </div>
+            <input class="weui-cell__ft ques-inter" placeholder="请选择" id="industry"/>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span class="no-need"></span>职位等级</p>
+            </div>
+            <input class="weui-cell__ft ques-inter" placeholder="请选择" id="positionGrade"/>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span class="no-need"></span>开始工作年份</p>
+            </div>
+            <input class="weui-cell__ft ques-inter" placeholder="请选择" id="workDay"/>
+        </div>
+        <input hidden="hidden" id="isBOE" name="btn1" type="radio" value="off"/>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span  class="no-need"></span>是否是BOE员工</p>
+            </div>
+            <div class="weui-cell__ft">
+                <label for="isBOELable" class="weui-switch-cp">
+                    <input id="isBOELable" class="weui-switch-cp__input" type="checkbox">
+                    <div class="weui-switch-cp__box"></div>
+                </label>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span  class="no-need"></span>姓名</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input id="userName" type="text">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span  class="no-need"></span>工号</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input id="userNo" type="text">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <p><span  class="no-need"></span>邮箱</p>
+            </div>
+            <div class="weui-cell__ft">
+                <input  type="text">
+            </div>
+        </div>
+
+    </div>
+    <div class="userInfoSubmit" @click="userInfoSubmit">确认发布</div>
+
+</div>
+
+</body>
+<script src="../js/user-infos.js"></script>
+</html>

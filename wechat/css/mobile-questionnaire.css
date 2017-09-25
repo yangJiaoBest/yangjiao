@@ -1,0 +1,88 @@
+.array-option {
+  text-align: center; }
+
+.array-option2 {
+  width: 45%; }
+
+.array-option3 {
+  width: 30%; }
+
+.array-option4 {
+  width: 20%; }
+
+.array-option5 {
+  width: 16%; }
+
+.array-option6 {
+  width: 14%; }
+
+#mobileQuestion .ques-big-title {
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  background-color: #0d7ddc;
+  color: white;
+  text-align: center;
+  font-size: 18px; }
+#mobileQuestion .ques-big-info {
+  padding: 5px 10px;
+  font-size: 16px; }
+#mobileQuestion .quest-big-body {
+  padding: 5px 10px; }
+  #mobileQuestion .quest-big-body .ques-array-box {
+    margin-bottom: 20px; }
+    #mobileQuestion .quest-big-body .ques-array-box .ques-array-info {
+      margin: 5px 0;
+      font-size: 16px; }
+    #mobileQuestion .quest-big-body .ques-array-box .array-titles-box {
+      padding: 10px;
+      border: 1px solid #eee; }
+      #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .array-options {
+        display: flex;
+        justify-content: space-around;
+        vertical-align: middle;
+        background-color: #eee;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 30px; }
+        #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .array-options .array-option {
+          text-align: center; }
+      #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .ques-title-name {
+        display: flex;
+        justify-content: flex-start;
+        vertical-align: middle;
+        margin: 10px 0;
+        font-size: 14px; }
+      #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .ques-options {
+        display: flex;
+        justify-content: space-around;
+        vertical-align: middle;
+        flex-wrap: wrap; }
+        #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .ques-options .ques-option {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer; }
+          #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .ques-options .ques-option .ques-input-common {
+            display: none;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none; }
+          #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .ques-options .ques-option .ques-input-replace {
+            width: 24px;
+            height: 24px;
+            background: url(../images/select/check_01.png) no-repeat;
+            background-size: contain; }
+          #mobileQuestion .quest-big-body .ques-array-box .array-titles-box .array-titles .ques-options .ques-option .ques-input-common:checked + .ques-input-replace {
+            background: url(../images/select/check_02.png) no-repeat;
+            background-size: contain; }
+#mobileQuestion .ques-submit {
+  margin: 50px auto 50px;
+  width: 90%;
+  line-height: 30px;
+  background-color: #0d7ddc;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px; }
+
+/*# sourceMappingURL=mobile-questionnaire.css.map */

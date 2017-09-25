@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>答题页</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/weui.css"/>
+    <link rel="stylesheet" href="../jQuery-weui-1.0.1/jquery-weui.css">
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/mobile-questionnaire.css"/>
+    <script src="../jQuery-weui-1.0.1/jquery.min.js"></script>
+    <script src="../jQuery-weui-1.0.1/jquery-weui.min.js"></script>
+    <script src="../js/pub/vue.min.js"></script>
+    <script src="../js/pub/vue-resource@1.3.3.js"></script>
+</head>
+<body>
+<div id="mobileQuestion">
+    <div class="ques-big-title">问卷名称</div>
+    <div class="ques-big-info">问卷的说明</div>
+    <div class="quest-big-body">
+        <div class="ques-array-box">
+            <div class="ques-array-info">矩阵一提示</div>
+            <div class="array-titles-box">
+                <div class="array-titles">
+                    <div class="array-options">
+                        <span class="array-option array-option6">选项一</span>
+                        <span class="array-option array-option6">选项二</span>
+                        <span class="array-option array-option6">选项三</span>
+                        <span class="array-option array-option6">选项四</span>
+                        <span class="array-option array-option6">选项五</span>
+                        <span class="array-option array-option6">选项六</span>
+                    </div>
+                    <!--题目渲染-->
+                    <div class="ques-titles" v-for="arrTitle in arrTitles">
+                        <div class="ques-title-name">
+                            <div>{{arrTitle.quesSort}}</div>
+                            <div>{{arrTitle.questName}}</div>
+                        </div>
+                        <div class="ques-options" >
+                            <div class="ques-option" :class="{'array-option2':arrTitle.optionsClass.option2,'array-option3':arrTitle.optionsClass.option3,'array-option4':arrTitle.optionsClass.option4,'array-option5':arrTitle.optionsClass.option5,'array-option6':arrTitle.optionsClass.option6}" v-for="quesOption in arrTitle.questOptions">
+                                <input type="radio" class="ques-input-common" :name="arrTitle.questNameEn" :id="quesOption.id" :value="quesOption.value" v-model="arrTitle.questValue"><label class="ques-input-replace" :for="quesOption.id"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--矩阵块渲染-->
+        <div class="ques-array-box">
+            <div class="ques-array-info">矩阵二提示</div>
+            <div class="array-titles-box">
+                <div class="array-titles">
+                    <div class="array-options">
+                        <span class="array-option array-option3">满意</span>
+                        <span class="array-option array-option3">一般</span>
+                        <span class="array-option array-option3">不满意</span>
+                    </div>
+                    <div class="ques-titles">
+                        <div class="ques-title-name">
+                            <div>1、</div>
+                            <div>题目一的内容</div>
+                        </div>
+                        <div class="ques-options">
+                            <div class="ques-option array-option6">
+                                <input type="radio" class="ques-input-common" name="ques_3" id="ques_3_1" value="ques_3_1"><label class="ques-input-replace" for="ques_3_1"></label>
+                            </div>
+                            <div class="ques-option array-option6">
+                                <input type="radio" class="ques-input-common" name="ques_3" id="ques_3_2" value="ques_3_2"><label class="ques-input-replace" for="ques_3_2"></label>
+                            </div>
+                            <div class="ques-option array-option6">
+                                <input type="radio" class="ques-input-common" name="ques_3" id="ques_3_3" value="ques_3_3"><label class="ques-input-replace" for="ques_3_3"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ques-titles">
+                        <div class="ques-title-name">
+                            <div>2、</div>
+                            <div>题目一的内容</div>
+                        </div>
+                        <div class="ques-options">
+                            <div class="ques-option array-option3">
+                                <input type="radio" class="ques-input-common" name="ques_5" id="ques_5_1" value="ques_5_1"><label class="ques-input-replace" for="ques_5_1"></label>
+                            </div>
+                            <div class="ques-option array-option3">
+                                <input type="radio" class="ques-input-common" name="ques_5" id="ques_5_2" value="ques_5_2"><label class="ques-input-replace" for="ques_5_2"></label>
+                            </div>
+                            <div class="ques-option array-option3">
+                                <input type="radio" class="ques-input-common" name="ques_5" id="ques_5_3" value="ques_5_3"><label class="ques-input-replace" for="ques_5_3"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="array-titles">
+                    <div class="array-options">
+                        <span class="array-option array-option3">满意</span>
+                        <span class="array-option array-option3">一般</span>
+                        <span class="array-option array-option3">不满意</span>
+                    </div>
+                    <div class="ques-titles">
+                        <div class="ques-title-name">
+                            <div>3、</div>
+                            <div>题目一的内容</div>
+                        </div>
+                        <div class="ques-options">
+                            <div class="ques-option array-option3">
+                                <input type="radio" class="ques-input-common" name="ques_4" id="ques_4_1" value="ques_4_1"><label class="ques-input-replace" for="ques_4_1"></label>
+                            </div>
+                            <div class="ques-option array-option3">
+                                <input type="radio" class="ques-input-common" name="ques_4" id="ques_4_2" value="ques_4_2"><label class="ques-input-replace" for="ques_4_2"></label>
+                            </div>
+                            <div class="ques-option array-option3">
+                                <input type="radio" class="ques-input-common" name="ques_4" id="ques_4_3" value="ques_4_3"><label class="ques-input-replace" for="ques_4_3"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ques-submit">提交</div>
+</div>
+
+</body>
+<script src="../js/mobile-questionnaire.js"></script>
+</html>

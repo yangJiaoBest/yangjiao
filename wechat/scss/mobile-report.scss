@@ -1,0 +1,178 @@
+#mobileReport{
+  //图形组件样式
+  .graph-item-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    width:80px;
+    padding: 2px 5px;
+    font-size: 14px;
+    .graph-img{
+      margin-right:5px;
+    }
+  }
+  .selet-graph-item-box{
+    color:#fff;
+    background-color: #0d7ddc;
+  }
+  //圆圈被选样式
+  .unselect-img{
+    margin-right:10px;
+    width: 20px;
+    min-height:20px;
+    background: url("../images/select/check_01.png") no-repeat center;
+    background-size: cover;
+  }
+  //圆圈未选样式
+  .select-img{
+    margin-right:10px;
+    width: 20px;
+    min-height:20px;
+    background: url("../images/select/check_02.png") no-repeat center;
+    background-size: cover;
+  }
+  .reportWrapper{
+    margin-top:10px;
+    .textarea-box{
+      padding: 5px;
+      border: 1px solid #ddd;
+      margin:10px;
+    }
+    .completeBtn{
+      margin:50px auto 0;
+      width: 90%;
+      line-height: 35px;
+      text-align: center;
+      background: #0d7ddc;
+      color: #fff;
+      border-radius: 5px;
+
+    }
+    #scoreExplain{
+      padding: 5px;
+      margin:10px;
+      .nodimension-select{
+        text-align: center;
+        padding:10px;
+      }
+      .dimension-list{
+        margin:10px auto 10px;
+        border: 1px solid #aaa;
+        .dimension-item{
+          margin:10px auto;
+          width: 50%;
+          line-height: 30px;
+          text-align: center;
+          background-color: #aaa;
+          color: white;
+          border-radius: 3px;
+        }
+        .select-dimension-item{
+          background-color: #0d7ddc;
+        }
+      }
+      .item-score-list{
+        margin:10px auto 10px;
+        border: 1px solid #aaa;
+        .item-score-box{
+          margin: 10px;
+          padding: 10px;
+          background-color: #eee;
+          border-radius: 3px;
+          font-size:14px;
+          .score-segment{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 5px;
+            .score-input{
+              width:25px;
+              height:13px;
+              margin:0 10px;
+              text-align: center;
+              font-size: 14px;
+              background-color: #fff;
+            }
+            .add-dele{
+              width: 20px;
+              height:20px;
+              margin-right: 13px;
+              vertical-align: middle;
+            }
+          }
+          .textarea-box-score{
+            padding: 5px;
+            border: 1px solid #ddd;
+            margin:10px 0;
+            background-color: #fff;
+          }
+
+        }
+      }
+    }
+    #graphSelect{
+      margin:10px;
+      .nograph-select{
+        padding:10px;
+        text-align: center;
+      }
+      .graph-list{
+        margin:10px auto 10px;
+        border: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        vertical-align: middle;
+        flex-wrap: wrap;
+        .graph-item-parent{
+            width:45%;
+          .graph-item{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin:10px;
+
+          }
+          .graph-item-parent-submit{
+            width:125px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #0d7ddc;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+          }
+        }
+      }
+      .graph-para{
+        margin:10px auto 10px;
+        border: 1px solid #eee;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .graph-para-left{
+          width:120px;
+          border-right:1px solid #eee;
+          .graph-para-item{
+            margin:10px;
+          }
+        }
+        .graph-para-right{
+          flex:1;
+          .graph-para-dimension{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left:15px;
+            font-size: 15px;
+            border-bottom:1px solid #eee;
+            border-top:1px solid #eee;
+            margin:10px 0;
+          }
+        }
+      }
+    }
+  }
+}

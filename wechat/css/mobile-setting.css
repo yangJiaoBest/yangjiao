@@ -1,0 +1,35 @@
+.page-title {
+  width: 100%;
+  height: 40px;
+  background-color: #0d7ddc;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px; }
+  .page-title .page-back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 20px;
+    cursor: pointer; }
+  .page-title .page-name {
+    line-height: 40px;
+    vertical-align: middle; }
+
+#mobileSet .mobileSettings {
+  margin-top: 25px; }
+  #mobileSet .mobileSettings .main-item {
+    margin: 20px auto;
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #0d7ddc;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #aaa; }
+  #mobileSet .mobileSettings .main-item1 {
+    font-size: 14px;
+    text-align: center; }
+
+/*# sourceMappingURL=mobile-setting.css.map */
