@@ -32,15 +32,17 @@ var vmMobileLogin = new Vue({
             //登录请求
             loginSubmit:function(){
                 if(this.isInputRight()){
-                    var postData={
+                    var postData = {
                         "email":this.email,
                         "password":this.password
                     };
-                    var url='http://sscpre.boe.com/v1/assess-api/user/login';
-                    Vue.http.post(url,postData
+                    var loginUrl = serverURl + '/user/login';
+                    Vue.http.post(loginUrl,postData
                     ).then(function(res){
                         if(res.body.code === 200){
-                           $.alert("跳转到首页");
+                            window.sessionStorage.setItem('userId',res.body.data.id);
+                            window.sessionStorage.setItem('mail',res.body.data.mail);
+                            window.location.href=window.location.href.replace('html/mobile-login.html','index.html');
                         }else{
                             $.alert(res.body.msg);
                         }

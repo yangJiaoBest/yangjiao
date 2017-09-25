@@ -6,6 +6,17 @@ var vm = new Vue({
 	data:{
 		flag0:true,//已建问卷和已答问卷的切换标识
 		flag1:false,//展示弹出标签
+		mailLoginStatus:"邮箱登录",//邮箱登录状态
+	},
+	mounted:function(){
+		var userId = window.sessionStorage.getItem('userId');
+		if(userId && userId != null){
+			this.mailLoginStatus='退出邮箱登录';
+		}
+		else{
+			this.mailLoginStatus='邮箱登录';
+		}
+
 	},
 	methods:{
 		//去发布页
@@ -44,7 +55,13 @@ var vm = new Vue({
 		},
 		//去邮箱登录页
 		mailLogin:function(){
-			window.location.href = window.location.href.replace("index.html","html/mobile-login.html");
+			if(this.mailLoginStatus=="邮箱登录"){
+				window.location.href = window.location.href.replace("index.html","html/mobile-login.html");
+			}else{
+				window.sessionStorage.clear();
+				window.location.href = window.location.href.replace("index.html","index.html");
+			}
+
 		},
 		//去新建问卷页
 		mobileNew:function(){

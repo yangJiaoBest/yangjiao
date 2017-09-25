@@ -206,7 +206,7 @@
         </a>
     </div>
     <ul class="index-menus" :class="{'dis-none':!flag1}">
-        <li class="index-menu" @click="mailLogin"><a href="#" class="index-menu-a">邮箱登录</a></li>
+        <li class="index-menu" @click="mailLogin"><a href="#" class="index-menu-a">{{mailLoginStatus}}</a></li>
         <li class="index-menu" @click="mobileNew"><a href="#" class="index-menu-a">新建问卷</a></li>
         <li class="index-menu" @click="contactUs"><a href="#" class="index-menu-a">联系我们</a></li>
     </ul>

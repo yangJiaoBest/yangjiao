@@ -69,6 +69,7 @@ Vue.component('ques-title-name',{
 var vmNewQues = new Vue({
     el:'#mobileNew',
     data:{
+        quesName:'',//问卷名称
         tagList:[
             {tagName:'性格',isSelect:false,id:1},
             {tagName:'认知',isSelect:false,id:2},
@@ -81,7 +82,6 @@ var vmNewQues = new Vue({
         titleNames:[{titleName:"题目内容一"},{titleName:"题目内容二"},{titleName:"题目内容三"}],//题目内容
         quesTitleInfo:"",
         optionContents:[{optionName:"A",score:"12"},{optionName:"B",score:"10"}],//选项内容
-        quesName:'',//问卷名称
         showFirstStep:true,
          },
     methods:{
