@@ -1,9 +1,6 @@
 /**
  * Created by 00004725 on 2017/9/13.
  */
-
-var serverURL='http://assessment.boe.com:8080/ac/';
-
 /**
  * 注册全局组件
  * 题目名称模板
@@ -70,20 +67,34 @@ var vmNewQues = new Vue({
     el:'#mobileNew',
     data:{
         quesName:'',//问卷名称
-        tagList:[
-            {tagName:'性格',isSelect:false,id:1},
-            {tagName:'认知',isSelect:false,id:2},
-            {tagName:'职业',isSelect:false,id:3},
-            {tagName:'健康',isSelect:false,id:4},
-            {tagName:'价值观',isSelect:false,id:5},
-            {tagName:'情感',isSelect:false,id:6},
-        ],//标签名称列表
+        //tagList:[
+        //    //{tagName:'性格',isSelect:false,id:1},
+        //    //{tagName:'认知',isSelect:false,id:2},
+        //    //{tagName:'职业',isSelect:false,id:3},
+        //    //{tagName:'健康',isSelect:false,id:4},
+        //    //{tagName:'价值观',isSelect:false,id:5},
+        //    //{tagName:'情感',isSelect:false,id:6},
+        //],//标签名称列表
+        tagList:[],
         tagSelectNum:0,//标签选择的个数
-        titleNames:[{titleName:"题目内容一"},{titleName:"题目内容二"},{titleName:"题目内容三"}],//题目内容
-        quesTitleInfo:"",
-        optionContents:[{optionName:"A",score:"12"},{optionName:"B",score:"10"}],//选项内容
+        quesIllustrate:"",//问卷说明
+        titleNames:[{name:"",isAnswer:"",scoreRule:"",sort:""}],//题目内容
+        quesTitleInfo:"",//题目提示
+        optionContents:[{name:"",score:"",isScore:"",sort:""}],//选项内容
         showFirstStep:true,
          },
+    mounted:function(){
+        if(window.sessionStorage.getItem('userId')&&window.sessionStorage.getItem('email')){
+            //获取问卷名称Tag列表
+            this.getTagList();
+        }else{
+            $.alert("用户您好，请先登录","提示",function(){
+                window.location.href=window.location.href.replace('mobile-new.html','mobile-login.html');
+            });
+
+        }
+
+    },
     methods:{
         //问卷标签最多选三个
         tagSelect:function(tagItem,index){
@@ -118,14 +129,56 @@ var vmNewQues = new Vue({
         completePress:function(){
             if(this.quesTitleInfo==""){
                 $.alert("请输入题目提示");
-            }else if(this.titleNames==""){
+            }else if(this.titleNames==""||this.titleNames[0].name==""){
                 $.alert("请添加题目内容");
-            }else if(this.optionContents==""){
+            }else if(this.optionContents==""||this.optionContents[0].name==""){
                 $.alert("请添加选项内容");
             }else{
-                $.alert("所有选项填判断已完成跳转到首页");
+                var userId=window.sessionStorage.getItem('userId');
+                //问卷标签
+                var tempTagName=[];
+                this.tagList.forEach(function(value,index,arry){
+                    if(value.isSelect){
+                        tempTagName.push(value.id);
+                    }
+                });
+                //选项列表
+                var optionList=[];
+                this.optionContents.forEach(function(value,index,arry){
+                    value.sort=index;
+                });
+                this.titleNames.forEach(function(value,index,array){
+                    value,sort=index;
+                })
+                var newData={
+                    "answerInterval": 0,
+                    "context": this.quesIllustrate,
+                    "createBy": userId,
+                    "isSID": 1,
+                    "isSingle": 0,
+                    "naireList": [
+                        {
+                            "name": "",
+                            "optionList": this.optionContents,
+                            "optionRule": "",
+                            "sort": 1,
+                            "titleList":this.titleNames
+                        }
+                    ],
+                    "tag": tempTagName.join(","),
+                    "title": this.quesName
+                };
+                var newQuestUrl = serverURl + '/question/insertAll';
+                Vue.http.post(newQuestUrl,newData).then(function(res){
+                    if(res.body.code=="200"){
+                         $.alert("成功提交");
+                    }else{
+                        $.alert(res.body.msg);
+                    }
+                },function(error){
+                    $.alert(error);
+                })
             }
-
         },
         //删除题目
         deleteTitle:function(index){
@@ -133,12 +186,11 @@ var vmNewQues = new Vue({
         },
         //添加题目
         addTitle:function(){
-            this.titleNames.push({titleName:""});
-
+            this.titleNames.push({name:"",isAnswer:"",scoreRule:""});
         },
         //添加选项
         addOption:function(){
-            this.optionContents.push({optionName:"",score:""});
+            this.optionContents.push({name:"",score:"",isScore:"",sort:""});
         },
         //删除选项
         deleteOption:function(index){
@@ -161,6 +213,27 @@ var vmNewQues = new Vue({
               this.optionContents.splice(index+2,0,this.optionContents[index]);
               this.optionContents.splice(index,1);
           }
+        },
+        //获取tag列表
+        getTagList:function(){
+            Vue.http({
+                method:'get',
+                url:serverURl + "/operate/getTagList",
+            }).then(function(res){
+                if(res.body.code=="200"){
+                    var tempTagItems=[];
+                    res.body.data.forEach(function(val,index,array){
+                        var tempTagItem = {tagName:val.name,isSelect:false,id:val.id};
+                        tempTagItems.push(tempTagItem);
+                    });
+                    console.log(tempTagItems);
+                    vmNewQues.tagList=tempTagItems;
+                }else{
+                    $.alert(res.body.msg);
+                }
+            },function(error){
+                $.alert(error);
+            })
         }
     }
 });

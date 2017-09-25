@@ -18,7 +18,6 @@
 /*
  * vue实例化
  */
-var javaURI = 'http://sscpre.boe.com/v1/assess-api/user/login';
 var vmMobileLogin = new Vue({
         el:'#mobileLogin',
         data:{
@@ -41,13 +40,14 @@ var vmMobileLogin = new Vue({
                     ).then(function(res){
                         if(res.body.code === 200){
                             window.sessionStorage.setItem('userId',res.body.data.id);
-                            window.sessionStorage.setItem('mail',res.body.data.mail);
+                            window.sessionStorage.setItem('email',res.body.data.email);
+                            //window.sessionStorage.setItem('token',res.headers)
                             window.location.href=window.location.href.replace('html/mobile-login.html','index.html');
                         }else{
                             $.alert(res.body.msg);
                         }
                     },function(error){
-                        alert(error);
+                        $.alert(error);
                     })
                 }
             },
