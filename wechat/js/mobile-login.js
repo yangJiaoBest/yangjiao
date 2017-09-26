@@ -41,7 +41,7 @@ var vmMobileLogin = new Vue({
                         if(res.body.code === 200){
                             window.sessionStorage.setItem('userId',res.body.data.id);
                             window.sessionStorage.setItem('email',res.body.data.email);
-                            //window.sessionStorage.setItem('token',res.headers)
+                            window.sessionStorage.setItem('token',res.body.data.token);
                             window.location.href=window.location.href.replace('html/mobile-login.html','index.html');
                         }else{
                             $.alert(res.body.msg);

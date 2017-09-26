@@ -129,55 +129,20 @@ var vmNewQues = new Vue({
         completePress:function(){
             if(this.quesTitleInfo==""){
                 $.alert("请输入题目提示");
-            }else if(this.titleNames==""||this.titleNames[0].name==""){
+            }else if(this.titleNames==""||this.titleNames.forEach(function(value,index,arry){
+                    if(value.name==""){
+                        return false;
+                    }
+                })){
                 $.alert("请添加题目内容");
-            }else if(this.optionContents==""||this.optionContents[0].name==""){
+            }else if(this.optionContents==""||this.optionContents.forEach(function(value,index,arry){
+                    if(value.name==""){
+                        return false;
+                    }
+                })){
                 $.alert("请添加选项内容");
             }else{
-                var userId=window.sessionStorage.getItem('userId');
-                //问卷标签
-                var tempTagName=[];
-                this.tagList.forEach(function(value,index,arry){
-                    if(value.isSelect){
-                        tempTagName.push(value.id);
-                    }
-                });
-                //选项列表
-                var optionList=[];
-                this.optionContents.forEach(function(value,index,arry){
-                    value.sort=index;
-                });
-                this.titleNames.forEach(function(value,index,array){
-                    value,sort=index;
-                })
-                var newData={
-                    "answerInterval": 0,
-                    "context": this.quesIllustrate,
-                    "createBy": userId,
-                    "isSID": 1,
-                    "isSingle": 0,
-                    "naireList": [
-                        {
-                            "name": "",
-                            "optionList": this.optionContents,
-                            "optionRule": "",
-                            "sort": 1,
-                            "titleList":this.titleNames
-                        }
-                    ],
-                    "tag": tempTagName.join(","),
-                    "title": this.quesName
-                };
-                var newQuestUrl = serverURl + '/question/insertAll';
-                Vue.http.post(newQuestUrl,newData).then(function(res){
-                    if(res.body.code=="200"){
-                         $.alert("成功提交");
-                    }else{
-                        $.alert(res.body.msg);
-                    }
-                },function(error){
-                    $.alert(error);
-                })
+                this.submitQuesData();
             }
         },
         //删除题目
@@ -228,6 +193,54 @@ var vmNewQues = new Vue({
                     });
                     console.log(tempTagItems);
                     vmNewQues.tagList=tempTagItems;
+                }else{
+                    $.alert(res.body.msg);
+                }
+            },function(error){
+                $.alert(error);
+            })
+        },
+        //新建问卷提交数据
+        submitQuesData:function(){
+            //var userId=window.sessionStorage.getItem('userId');
+            var userId='c93d2c526b5a2b44f81d66c6dca3096c';
+            //问卷标签
+            var tempTagName=[];
+            this.tagList.forEach(function(value,index,arry){
+                if(value.isSelect){
+                    tempTagName.push(value.id);
+                }
+            });
+            //选项列表
+            var optionList=[];
+            this.optionContents.forEach(function(value,index,arry){
+                value.sort=index;
+            });
+            this.titleNames.forEach(function(value,index,array){
+                value,sort=index;
+            })
+            var newData={
+                "answerInterval": 0,
+                "context": this.quesIllustrate,
+                "createBy": userId,
+                "isSID": 1,
+                "isSingle": 0,
+                "naireList": [
+                    {
+                        "name": "",
+                        "optionList": this.optionContents,
+                        "optionRule": "",
+                        "sort": 1,
+                        "titleList":this.titleNames
+                    }
+                ],
+                "tag": tempTagName.join(","),
+                "title": this.quesName
+            };
+            var newQuestUrl = serverURl + '/question/insertAll';
+            Vue.http.post(newQuestUrl,newData).then(function(res){
+                if(res.body.code=="200"){
+                    $.alert("成功提交");
                 }else{
                     $.alert(res.body.msg);
                 }
