@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>搜索</title>
+    <title>现测献计搜索</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="../css/reset.css"/>
     <link rel="stylesheet" href="../jQuery-weui-1.0.1/weui.css"/>
@@ -12,14 +12,28 @@
 </head>
 <body>
 <div id="mobileSearch">
-    <div class="search-list-head">
-        <a href="#">
-            <div class="company">现测献计</div>
-        </a>
-    </div>
-    <div class="search-list-box">
-        <input type="text" class="search-input-mobile" placeholder="请输入关键词" v-model="questionnaire">
-        <div class="search-btn-mobile" @click="search">搜索</div>
+    <!--<div class="search-list-head">-->
+        <!--<a href="#">-->
+            <!--<div class="company">现测献计</div>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="search-list-box">-->
+        <!--<input type="text" class="search-input-mobile" placeholder="请输入关键词" v-model="quesName">-->
+        <!--<div class="search-btn-mobile" @click="search">搜索</div>-->
+    <!--</div>-->
+    <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form" @submit="search">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="" v-model="quesName" name="quesName">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
     </div>
     <div class="search-list-content">
         <div class="search-list-row">

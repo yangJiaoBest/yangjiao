@@ -129,22 +129,36 @@ var vmNewQues = new Vue({
         completePress:function(){
             if(this.quesTitleInfo==""){
                 $.alert("请输入题目提示");
-            }else if(this.titleNames==""||this.titleNames.forEach(function(value,index,arry){
-                    if(value.name==""){
-                        return false;
-                    }
-                })){
-                $.alert("请添加题目内容");
-            }else if(this.optionContents==""||this.optionContents.forEach(function(value,index,arry){
-                    if(value.name==""){
-                        return false;
-                    }
-                })){
-                $.alert("请添加选项内容");
             }else{
+                if(this.titleNames.length==0){
+                    $.alert("请添加题目内容");
+                    return;
+                }
+                var ii,iiLength=this.titleNames.length;
+                for(ii=0;ii<iiLength;ii++){
+                    if(this.titleNames[ii].name==""){
+                        $.alert("请添加题目内容");
+                        return;
+                    }else{
+                        this.titleNames[ii].sort=ii+1;
+                    }
+                };
+                if(this.optionContents.length==0){
+                    $.alert("请添加选项内容");
+                    return;
+                }
+                var jj,jjLength=this.optionContents.length;
+                for(jj=0;jj<jjLength;jj++){
+                    if(this.optionContents[jj].name=="") {
+                            $.alert("请添加选项内容");
+                            return;
+                        }else{
+                           this.optionContents[jj].sort=jj+1;
+                        }
+                    };
+                }
                 this.submitQuesData();
-            }
-        },
+            },
         //删除题目
         deleteTitle:function(index){
             this.titleNames.splice(index,1);
@@ -202,27 +216,16 @@ var vmNewQues = new Vue({
         },
         //新建问卷提交数据
         submitQuesData:function(){
-            //var userId=window.sessionStorage.getItem('userId');
-            var userId='c93d2c526b5a2b44f81d66c6dca3096c';
             //问卷标签
-            var tempTagName=[];
+            var tempTagName=[];//tag以"1,2,3"形式传输
             this.tagList.forEach(function(value,index,arry){
                 if(value.isSelect){
                     tempTagName.push(value.id);
                 }
             });
-            //选项列表
-            var optionList=[];
-            this.optionContents.forEach(function(value,index,arry){
-                value.sort=index;
-            });
-            this.titleNames.forEach(function(value,index,array){
-                value,sort=index;
-            })
-            var newData={
+            var newQuesData={
                 "answerInterval": 0,
                 "context": this.quesIllustrate,
-                "createBy": userId,
                 "isSID": 1,
                 "isSingle": 0,
                 "naireList": [
@@ -238,7 +241,7 @@ var vmNewQues = new Vue({
                 "title": this.quesName
             };
             var newQuestUrl = serverURl + '/question/insertAll';
-            Vue.http.post(newQuestUrl,newData).then(function(res){
+            Vue.http.post(newQuestUrl,newQuesData).then(function(res){
                 if(res.body.code=="200"){
                     $.alert("成功提交");
                 }else{
