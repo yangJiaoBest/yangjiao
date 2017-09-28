@@ -34,7 +34,7 @@ var vmQuesSet = new Vue({
         },
         //维度设置
         dimensionSetting:function(){
-            window.location.href='../html/dimensionality-list.html ';
+            window.location.href='../html/mobile-dimension-list.html ';
             //$.alert("跳转到维度设置");
         },
         //修改问卷

@@ -69,7 +69,7 @@ var vm = new Vue({
 		},
 		//去联系我们页
 		contactUs:function(){
-			window.location.href = window.location.href.replace("index.html","html/contact-us.html");
+			window.location.href = window.location.href.replace("index.html","html/mobile-contact-us.html");
         }
 	}
 });
