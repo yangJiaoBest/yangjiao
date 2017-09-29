@@ -7,6 +7,11 @@ var vm = new Vue({
 		flag0:true,//已建问卷和已答问卷的切换标识
 		flag1:false,//展示弹出标签
 		mailLoginStatus:"邮箱登录",//邮箱登录状态
+		bannerList:[],//banner列表
+		tagList:[],//标签tag列表
+		pageList:[],//问卷列表
+		isActiveTag:0,//
+
 	},
 	mounted:function(){
 		var userId = window.sessionStorage.getItem('userId');
@@ -16,9 +21,72 @@ var vm = new Vue({
 		else{
 			this.mailLoginStatus='邮箱登录';
 		}
+		this.getBannerData();
+		this.getTagData();
+		this.getPageData(1,10,0);//pageSize=10&pageNum=1&tag=0
 
 	},
 	methods:{
+
+		//获取banner数据
+		getBannerData:function () {
+			var self = this,url = serverUrl + "/operate/getAdvertList";
+			Vue.http.get(url).then(function (res) {
+				if(res.body.code === 200){
+					self.bannerList = res.body.data;
+				}else {
+					console.log(res,res.body.code);
+					// $.alert(res.body.msg);
+				}
+
+			},function (err) {
+				$.alert("网络出错");
+				console.log(err);
+			})
+		},
+		//获取标签Tag数据
+		getTagData:function () {
+			var self = this,url = serverUrl + "/operate/getTagList";
+			Vue.http.get(url).then(function (res) {
+				console.log("tags==",res);
+				if(res.body.code === 200){
+					self.tagList = res.body.data;
+				}else {
+					console.log(res,res.body.code);
+					// $.alert(res.body.msg);
+				}
+
+			},function (err) {
+				$.alert("网络出错");
+				console.log(err);
+			})
+		},
+		//获取问卷列表图片数据
+		getPageData:function (pageNum,pageSize,tag) {
+			var self = this,
+				url = serverUrl + "/operate/getIndexList" + "?pageSize=" +pageSize+"&pageNum="+pageNum+"&tag="+tag;
+
+			Vue.http.get(url).then(function (res) {
+				console.log("getPageData==",res);
+				if(res.body.code === 200){
+					self.pageList = res.body.data;
+				}else {
+					console.log(res,res.body.code);
+					// $.alert(res.body.msg);
+				}
+			},function (err) {
+				$.alert("网络出错");
+				console.log(err);
+			})
+		},
+
+		//标签页的切换
+		changeTag :function (tagId) {
+			var self = this;
+			self.isActiveTag = tagId;
+			console.log(tagId);
+			self.getPageData(1,10,tagId);
+		},
 		//去发布页
 		goPublishPage:function () {
 			console.log(window.location.href,"mobile-setting.html");
@@ -72,4 +140,11 @@ var vm = new Vue({
 			window.location.href = window.location.href.replace("index.html","html/contact-us.html");
         }
 	}
+});
+$(function() {
+	FastClick.attach(document.body);
+});
+$(".swiper-container").swiper({
+	loop: true,
+	autoplay: 3000
 });

@@ -214,13 +214,19 @@ footer a {
     }
   }
 }
-.height100{
-  height: 100px;
+.height65{
+  height: 65px;
   line-height: 60px;
   text-align: center;
 }
 .dis-none{
   display: none;
+}
+.dis-block{
+  display: block;
+}
+.weui-bar__item--on > .weui-tabbar__label{
+  color: #0d7ddc !important;
 }
 //#tab3{
 //  overflow: hidden;
