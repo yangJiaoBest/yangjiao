@@ -33,7 +33,8 @@ var vmMobileLogin = new Vue({
                 if(this.isInputRight()){
                     var postData = {
                         "email":this.email,
-                        "password":this.password
+                        "password":this.password,
+                        "loginType":"1"//1是手机登录
                     };
                     var loginUrl = serverURl + '/user/login';
                     Vue.http.post(loginUrl,postData
@@ -75,6 +76,7 @@ var vmMobileLogin = new Vue({
                     return false;
                 }
                 return true;
-            }
+            },
+
         }
     });

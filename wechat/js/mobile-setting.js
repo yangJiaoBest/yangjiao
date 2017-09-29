@@ -38,8 +38,8 @@ var vmQuesSet = new Vue({
             //$.alert("跳转到维度设置");
         },
         //修改问卷
-        updateQuestionnaire:function(){
-            window.location.href='../html/mobile-new.html ';
+        updateQuestionnaire:function(quesId){
+            window.location.href='../html/mobile-new.html'+'?quesId='+"34";
             //$.alert("跳转到修改问卷");
         },
         //报告设置
