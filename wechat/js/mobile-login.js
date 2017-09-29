@@ -38,7 +38,7 @@ var vmMobileLogin = new Vue({
                     var loginUrl = serverURl + '/user/login';
                     Vue.http.post(loginUrl,postData
                     ).then(function(res){
-                        if(res.body.code === 200){
+                        if(res.body.code === "0"){
                             window.sessionStorage.setItem('userId',res.body.data.id);
                             window.sessionStorage.setItem('email',res.body.data.email);
                             window.sessionStorage.setItem('token',res.body.data.token);

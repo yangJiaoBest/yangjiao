@@ -9,8 +9,8 @@ var vm = new Vue({
 		mailLoginStatus:"邮箱登录",//邮箱登录状态
 	},
 	mounted:function(){
-		var userId = window.sessionStorage.getItem('userId');
-		if(userId && userId != null){
+		var userToken = window.sessionStorage.getItem('token');
+		if(userToken && userToken != null){
 			this.mailLoginStatus='退出邮箱登录';
 		}
 		else{

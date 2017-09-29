@@ -241,9 +241,10 @@ var vmNewQues = new Vue({
                 "title": this.quesName
             };
             var newQuestUrl = serverURl + '/question/insertAll';
-            Vue.http.post(newQuestUrl,newQuesData).then(function(res){
+            var userToken = window.sessionStorage.getItem("token");
+            Vue.http.post(newQuestUrl,newQuesData,{headers:{token:userToken}}).then(function(res){
                 if(res.body.code=="200"){
-                    $.alert("成功提交");
+                    $.alert("问卷已提交成功");
                 }else{
                     $.alert(res.body.msg);
                 }
