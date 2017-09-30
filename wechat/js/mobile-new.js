@@ -82,158 +82,251 @@ var vmNewQues = new Vue({
         quesTitleInfo:"",//题目提示
         optionContents:[{name:"",score:"",isScore:"",sort:""}],//选项内容
         showFirstStep:true,
+        quesId:"",//问卷id通过url传过来
+        optionType:"",//0-新建，1-修改
          },
     mounted:function(){
-        if(window.sessionStorage.getItem('userId')&&window.sessionStorage.getItem('email')){
+        if(window.sessionStorage.getItem('token')){
             //获取问卷名称Tag列表
             this.getTagList();
         }else{
             $.alert("用户您好，请先登录","提示",function(){
                 window.location.href=window.location.href.replace('mobile-new.html','mobile-login.html');
             });
-
+        }
+        this.quesId=getQueryString('quesId');
+        if(this.quesId&&this.quesId!=""){
+           //获取问卷详情
+            this.getQuestContens(this.quesId);
+            this.optionType=1;
+        }
+        else{
+            this.optionType=0;
         }
 
     },
-    methods:{
+    methods: {
         //问卷标签最多选三个
-        tagSelect:function(tagItem,index){
+        tagSelect: function (tagItem, index) {
             this.$nextTick(function () {
-                if(this.tagSelectNum>=3&&!tagItem.isSelect){
+                if (this.tagSelectNum >= 3 && !tagItem.isSelect) {
                     $.alert("最多只能选则3个");
-                }else{
-                    if(tagItem.isSelect){
-                        Vue.set(tagItem,'isSelect',false);
-                        this.tagSelectNum=this.tagSelectNum-1;
-                    }else{
-                        Vue.set(tagItem,'isSelect',true);
-                        this.tagSelectNum=this.tagSelectNum+1;
+                } else {
+                    if (tagItem.isSelect) {
+                        Vue.set(tagItem, 'isSelect', false);
+                        this.tagSelectNum = this.tagSelectNum - 1;
+                    } else {
+                        Vue.set(tagItem, 'isSelect', true);
+                        this.tagSelectNum = this.tagSelectNum + 1;
                     }
                 }
             });
         },
-        nextStepPress:function(){
-            if(this.quesName==''){
+        //下一步
+        nextStepPress: function () {
+            if (this.quesName == '') {
                 $.alert("请输入问卷名称！");
                 return false;
             }
-            if(this.tagSelectNum==0){
+            if (this.tagSelectNum == 0) {
                 $.alert('请选择问卷类型！');
                 return false;
             }
-            this.showFirstStep=false;
+            this.showFirstStep = false;
         },
-        lastStepPress:function(){
-            this.showFirstStep=true;
+        //上一步
+        lastStepPress: function () {
+            this.showFirstStep = true;
         },
-        completePress:function(){
-            if(this.quesTitleInfo==""){
+        //提交问卷前检验数据
+        completePress: function () {
+            if (this.quesTitleInfo == "") {
                 $.alert("请输入题目提示");
-            }else if(this.titleNames==""||this.titleNames[0].name==""){
-                $.alert("请添加题目内容");
-            }else if(this.optionContents==""||this.optionContents[0].name==""){
-                $.alert("请添加选项内容");
-            }else{
-                var userId=window.sessionStorage.getItem('userId');
-                //问卷标签
-                var tempTagName=[];
-                this.tagList.forEach(function(value,index,arry){
-                    if(value.isSelect){
-                        tempTagName.push(value.id);
+            } else {
+                if (this.titleNames.length == 0) {
+                    $.alert("请添加题目内容");
+                    return;
+                }
+                var ii, iiLength = this.titleNames.length;
+                for (ii = 0; ii < iiLength; ii++) {
+                    if (this.titleNames[ii].name == "") {
+                        $.alert("请添加题目内容");
+                        return;
+                    } else {
+                        this.titleNames[ii].sort = ii + 1;
                     }
-                });
-                //选项列表
-                var optionList=[];
-                this.optionContents.forEach(function(value,index,arry){
-                    value.sort=index;
-                });
-                this.titleNames.forEach(function(value,index,array){
-                    value,sort=index;
-                })
-                var newData={
-                    "answerInterval": 0,
-                    "context": this.quesIllustrate,
-                    "createBy": userId,
-                    "isSID": 1,
-                    "isSingle": 0,
-                    "naireList": [
-                        {
-                            "name": "",
-                            "optionList": this.optionContents,
-                            "optionRule": "",
-                            "sort": 1,
-                            "titleList":this.titleNames
-                        }
-                    ],
-                    "tag": tempTagName.join(","),
-                    "title": this.quesName
-                };
-                var newQuestUrl = serverURl + '/question/insertAll';
-                Vue.http.post(newQuestUrl,newData).then(function(res){
-                    if(res.body.code=="200"){
-                         $.alert("成功提交");
-                    }else{
-                        $.alert(res.body.msg);
+                }
+                ;
+                if (this.optionContents.length == 0) {
+                    $.alert("请添加选项内容");
+                    return;
+                }
+                var jj, jjLength = this.optionContents.length;
+                for (jj = 0; jj < jjLength; jj++) {
+                    if (this.optionContents[jj].name == "") {
+                        $.alert("请添加选项内容");
+                        return;
+                    } else {
+                        this.optionContents[jj].sort = jj + 1;
                     }
-                },function(error){
-                    $.alert(error);
-                })
+                }
+                ;
             }
+            if(this.optionType==0){
+                var urlStr='/question/insertAll';
+                this.submitQuesData(urlStr);
+            }else{
+                var urlStr='/question/update';
+                this.submitQuesData(urlStr);
+            }
+
         },
         //删除题目
-        deleteTitle:function(index){
-            this.titleNames.splice(index,1);
+        deleteTitle: function (index) {
+            this.titleNames.splice(index, 1);
         },
         //添加题目
-        addTitle:function(){
-            this.titleNames.push({name:"",isAnswer:"",scoreRule:""});
+        addTitle: function () {
+            this.titleNames.push({name: "", isAnswer: "", scoreRule: ""});
         },
         //添加选项
-        addOption:function(){
-            this.optionContents.push({name:"",score:"",isScore:"",sort:""});
+        addOption: function () {
+            this.optionContents.push({name: "", score: "", isScore: "", sort: ""});
         },
         //删除选项
-        deleteOption:function(index){
-            this.optionContents.splice(index,1);
+        deleteOption: function (index) {
+            this.optionContents.splice(index, 1);
         },
         //上移选项
-        upOption:function(index){
-          if(index==0){
-              $.alert("选项已在最前面");
-          }else{
-              this.optionContents.splice(index-1,0,this.optionContents[index]);
-              this.optionContents.splice(index+1,1);
-          }
+        upOption: function (index) {
+            if (index == 0) {
+                $.alert("选项已在最前面");
+            } else {
+                this.optionContents.splice(index - 1, 0, this.optionContents[index]);
+                this.optionContents.splice(index + 1, 1);
+            }
         },
         //下移选项
-        downOption:function(index){
-          if(index==this.optionContents.length-1){
-              $.alert("选项已是最后");
-          }else{
-              this.optionContents.splice(index+2,0,this.optionContents[index]);
-              this.optionContents.splice(index,1);
-          }
+        downOption: function (index) {
+            if (index == this.optionContents.length - 1) {
+                $.alert("选项已是最后");
+            } else {
+                this.optionContents.splice(index + 2, 0, this.optionContents[index]);
+                this.optionContents.splice(index, 1);
+            }
         },
         //获取tag列表
-        getTagList:function(){
+        getTagList: function () {
             Vue.http({
-                method:'get',
-                url:serverURl + "/operate/getTagList",
-            }).then(function(res){
-                if(res.body.code=="200"){
-                    var tempTagItems=[];
-                    res.body.data.forEach(function(val,index,array){
-                        var tempTagItem = {tagName:val.name,isSelect:false,id:val.id};
+                method: 'get',
+                url: serverURl + "/operate/getTagList",
+            }).then(function (res) {
+                if (res.body.code == "200") {
+                    var tempTagItems = [];
+                    res.body.data.forEach(function (val, index, array) {
+                        var tempTagItem = {tagName: val.name, isSelect: false, id: val.id};
                         tempTagItems.push(tempTagItem);
                     });
                     console.log(tempTagItems);
-                    vmNewQues.tagList=tempTagItems;
-                }else{
+                    vmNewQues.tagList = tempTagItems;
+                } else {
                     $.alert(res.body.msg);
                 }
-            },function(error){
+            }, function (error) {
                 $.alert(error);
             })
-        }
+        },
+        //新建、修改问卷提交数据
+        submitQuesData: function (urlStr) {
+            //问卷标签
+            var tempTagName = [];//tag以"1,2,3"形式传输
+            this.tagList.forEach(function (value, index, arry) {
+                if (value.isSelect) {
+                    tempTagName.push(value.id);
+                }
+            });
+            var newQuesData = {
+                "answerInterval": 0,
+                "context": this.quesIllustrate,
+                "isSID": 1,
+                "isSingle": 0,
+                "naireList": [
+                    {
+                        "name": "this.quesTitleInfo",
+                        "optionList": this.optionContents,
+                        "optionRule": "",
+                        "sort": 1,
+                        "titleList": this.titleNames
+                    }
+                ],
+                "tag": tempTagName.join(","),
+                "title": this.quesName
+            };
+            var newQuestUrl = serverURl +urlStr;
+            var userToken = window.sessionStorage.getItem("token");
+            Vue.http.post(newQuestUrl, newQuesData, {headers: {token: userToken}}).then(function (res) {
+                if (res.body.code == "200") {
+                    $.alert("问卷已提交成功");
+                } else {
+                    $.alert(res.body.msg);
+                }
+            }, function (error) {
+                $.alert(error);
+            })
+        },
+        //修改问卷获取详情
+        getQuestContens: function (id) {
+           var that = this;//this指向问题
+           Vue.http({
+               method:'GET',
+               url:serverURl+"/question/detail"+"?id="+id,
+           }).then(function(res){
+               if(res.body.code=="0"){
+                   var result = res.body.data;
+                   that.quesName=result.title;//问卷名称
+                   var tagListFlag=result.tag.split(',');//问卷标签
+                   tagListFlag.forEach(function(value,index,arry){
+                       var tagId=parseInt(value);
+                       console.log(that.tagList);
+                       that.tagList[tagId-1].isSelect=true;
+                   });
+                   that.tagSelectNum=tagListFlag.length;
+                   that.quesIllustrate=result.context;//问卷说明
+                   that.quesTitleInfo=result.arrNaire[0].name;//题目提示
+                   var titleList=result.arrNaire[0].arrTitle;//提目内容
+                   var tempTitleNames=[];
+                   titleList.forEach(function(value,index){
+                       var tempTitle={name:value.name,isAnswer:value.isAnswer,scoreRule:value.scoreRule,sort:value.sort};
+                       tempTitleNames.push(tempTitle);
+                   })
+                   that.titleNames=tempTitleNames;
+                   var optionList=result.arrNaire[0].arrOption;//选项内容
+                   var tempOptionNames=[];
+                   optionList.forEach(function(value,index){
+                       var tempOption={name:value.name,score:value.score,isScore:value.isScore,sort:value.sort};
+                       tempOptionNames.push(tempOption);
+                   })
+                   that.optionContents=tempOptionNames;//选项内容
+
+
+               }else{
+                   $.alert(res.body.msg);
+               }
+           },function(error){
+               $.alert(error);
+           })
+        },
+
     }
 });
+
+//获取URL中的quesId
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if(r != null) {
+        return decodeURI(r[2]);
+    } else {
+        return null;
+    }
+}

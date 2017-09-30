@@ -33,15 +33,16 @@ var vmMobileLogin = new Vue({
                 if(this.isInputRight()){
                     var postData = {
                         "email":this.email,
-                        "password":this.password
+                        "password":this.password,
+                        "loginType":"1"//1是手机登录
                     };
                     var loginUrl = serverURl + '/user/login';
                     Vue.http.post(loginUrl,postData
                     ).then(function(res){
-                        if(res.body.code === 200){
+                        if(res.body.code === "0"){
                             window.sessionStorage.setItem('userId',res.body.data.id);
                             window.sessionStorage.setItem('email',res.body.data.email);
-                            //window.sessionStorage.setItem('token',res.headers)
+                            window.sessionStorage.setItem('token',res.body.data.token);
                             window.location.href=window.location.href.replace('html/mobile-login.html','index.html');
                         }else{
                             $.alert(res.body.msg);
@@ -75,6 +76,7 @@ var vmMobileLogin = new Vue({
                     return false;
                 }
                 return true;
-            }
+            },
+
         }
     });

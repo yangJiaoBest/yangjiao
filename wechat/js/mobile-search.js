@@ -8,11 +8,11 @@ var javaURI='http://assessment.boe.com:8080/ac/';
 var vmQuesSearch = new Vue({
     el: '#mobileSearch',
     data: {
-        questionnaire: '',
+        quesName: '',
     },
     methods:{
         search:function(){
-            alert(this.questionnaire);
+            $.alert(this.quesName);
             //window.location.href="mobile-search.html?name="+this.questionnaire;
         }
     }

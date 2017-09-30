@@ -14,8 +14,8 @@ var vm = new Vue({
 
 	},
 	mounted:function(){
-		var userId = window.sessionStorage.getItem('userId');
-		if(userId && userId != null){
+		var userToken = window.sessionStorage.getItem('token');
+		if(userToken && userToken != null){
 			this.mailLoginStatus='退出邮箱登录';
 		}
 		else{
@@ -137,7 +137,7 @@ var vm = new Vue({
 		},
 		//去联系我们页
 		contactUs:function(){
-			window.location.href = window.location.href.replace("index.html","html/contact-us.html");
+			window.location.href = window.location.href.replace("index.html","html/mobile-contact-us.html");
         }
 	}
 });
