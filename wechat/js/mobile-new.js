@@ -83,6 +83,7 @@ var vmNewQues = new Vue({
         optionContents:[{name:"",score:"",isScore:"",sort:""}],//选项内容
         showFirstStep:true,
         quesId:"",//问卷id通过url传过来
+        optionType:"",//0-新建，1-修改
          },
     mounted:function(){
         if(window.sessionStorage.getItem('token')){
@@ -97,6 +98,10 @@ var vmNewQues = new Vue({
         if(this.quesId&&this.quesId!=""){
            //获取问卷详情
             this.getQuestContens(this.quesId);
+            this.optionType=1;
+        }
+        else{
+            this.optionType=0;
         }
 
     },
@@ -167,7 +172,14 @@ var vmNewQues = new Vue({
                 }
                 ;
             }
-            this.submitQuesData();
+            if(this.optionType==0){
+                var urlStr='/question/insertAll';
+                this.submitQuesData(urlStr);
+            }else{
+                var urlStr='/question/update';
+                this.submitQuesData(urlStr);
+            }
+
         },
         //删除题目
         deleteTitle: function (index) {
@@ -224,8 +236,8 @@ var vmNewQues = new Vue({
                 $.alert(error);
             })
         },
-        //新建问卷提交数据
-        submitQuesData: function () {
+        //新建、修改问卷提交数据
+        submitQuesData: function (urlStr) {
             //问卷标签
             var tempTagName = [];//tag以"1,2,3"形式传输
             this.tagList.forEach(function (value, index, arry) {
@@ -250,7 +262,7 @@ var vmNewQues = new Vue({
                 "tag": tempTagName.join(","),
                 "title": this.quesName
             };
-            var newQuestUrl = serverURl + '/question/insertAll';
+            var newQuestUrl = serverURl +urlStr;
             var userToken = window.sessionStorage.getItem("token");
             Vue.http.post(newQuestUrl, newQuesData, {headers: {token: userToken}}).then(function (res) {
                 if (res.body.code == "200") {
@@ -269,7 +281,7 @@ var vmNewQues = new Vue({
                method:'GET',
                url:serverURl+"/question/detail"+"?id="+id,
            }).then(function(res){
-               if(res.body.code==200){
+               if(res.body.code=="0"){
                    var result = res.body.data;
                    that.quesName=result.title;//问卷名称
                    var tagListFlag=result.tag.split(',');//问卷标签
