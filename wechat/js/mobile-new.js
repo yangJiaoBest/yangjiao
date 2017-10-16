@@ -142,6 +142,7 @@ var vmNewQues = new Vue({
         completePress: function () {
             if (this.quesTitleInfo == "") {
                 $.alert("请输入题目提示");
+                return;
             } else {
                 if (this.titleNames.length == 0) {
                     $.alert("请添加题目内容");
@@ -252,7 +253,7 @@ var vmNewQues = new Vue({
                 "isSingle": 0,
                 "naireList": [
                     {
-                        "name": "this.quesTitleInfo",
+                        "name": this.quesTitleInfo,
                         "optionList": this.optionContents,
                         "optionRule": "",
                         "sort": 1,
@@ -270,6 +271,7 @@ var vmNewQues = new Vue({
             Vue.http.post(newQuestUrl, newQuesData, {headers: {token: userToken}}).then(function (res) {
                 if (res.body.code == "0") {
                     $.alert("问卷已提交成功");
+                    window.location.href = window.location.href.replace('mobile-new.html','mobile-setting.html');
                 } else {
                     $.alert(res.body.msg);
                 }
@@ -280,9 +282,11 @@ var vmNewQues = new Vue({
         //修改问卷获取详情
         getQuestContens: function (id) {
            var that = this;//this指向问题
+           var userToken = window.sessionStorage.getItem("token");
            Vue.http({
                method:'GET',
                url:serverURl+"/question/detail"+"?id="+id,
+               headers:{token:userToken}
            }).then(function(res){
                if(res.body.code=="0"){
                    var result = res.body.data;
@@ -310,7 +314,6 @@ var vmNewQues = new Vue({
                        tempOptionNames.push(tempOption);
                    })
                    that.optionContents=tempOptionNames;//选项内容
-
 
                }else{
                    $.alert(res.body.msg);
