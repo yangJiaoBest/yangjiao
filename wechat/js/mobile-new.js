@@ -98,10 +98,10 @@ var vmNewQues = new Vue({
         if(this.quesId&&this.quesId!=""){
            //获取问卷详情
             this.getQuestContens(this.quesId);
-            this.optionType=1;
+            this.optionType=1;//1 代表修改问卷
         }
         else{
-            this.optionType=0;
+            this.optionType=0;//0 代表新建问卷
         }
 
     },
@@ -221,7 +221,7 @@ var vmNewQues = new Vue({
                 method: 'get',
                 url: serverURl + "/operate/getTagList",
             }).then(function (res) {
-                if (res.body.code == "200") {
+                if (res.body.code == "0") {
                     var tempTagItems = [];
                     res.body.data.forEach(function (val, index, array) {
                         var tempTagItem = {tagName: val.name, isSelect: false, id: val.id};
@@ -262,10 +262,13 @@ var vmNewQues = new Vue({
                 "tag": tempTagName.join(","),
                 "title": this.quesName
             };
+            if(this.optionType==1 && this.quesId!=""){
+                newQuesData.id = this.quesId;
+            }
             var newQuestUrl = serverURl +urlStr;
             var userToken = window.sessionStorage.getItem("token");
             Vue.http.post(newQuestUrl, newQuesData, {headers: {token: userToken}}).then(function (res) {
-                if (res.body.code == "200") {
+                if (res.body.code == "0") {
                     $.alert("问卷已提交成功");
                 } else {
                     $.alert(res.body.msg);
